@@ -1,10 +1,12 @@
 package kenny.stack;
 
-public class StackOperation {
+public class StackOperationForArray {
 
-    public static StackUsingArray createStackUsingArray(int n) {
+    public static StackUsingArray createStack(int n) {
         return new StackUsingArray(n);
     }
+
+
 
     public static boolean isFull(StackUsingArray stack) {
         if (stack.getTop() == stack.getSize() - 1) {
