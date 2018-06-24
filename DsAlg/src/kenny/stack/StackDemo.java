@@ -39,5 +39,6 @@ public class StackDemo {
             StackOperation.printStack(stack);
             System.out.print("\n");
         }
+        System.out.print("Stack is empty:" + StackOperation.isEmpty(stack));
     }
 }
