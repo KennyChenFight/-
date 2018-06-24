@@ -5,7 +5,8 @@ import java.util.Random;
 public class StackDemo {
 
     public static void main(String[] args) {
-        stackUsingArrayDemo();
+        //stackUsingArrayDemo();
+        stackUsingLinkedListDemo();
     }
 
     /*
@@ -15,7 +16,7 @@ public class StackDemo {
     third print stack
      */
     public static void stackUsingArrayDemo() {
-        StackUsingArray stack = StackOperation.createStackUsingArray(5);
+        StackUsingArray stack = StackOperationForArray.createStack(5);
 
         // push item to stack until stack is full
         System.out.println("first push item to stack:");
@@ -23,22 +24,39 @@ public class StackDemo {
             Random random = new Random();
             int number = random.nextInt(5);
             System.out.print(number + " ");
-            StackOperation.push(stack, number);
+            StackOperationForArray.push(stack, number);
         }
         System.out.print("\n");
-        System.out.println("Stack is Full:" + StackOperation.isFull(stack));
+        System.out.println("Stack is Full:" + StackOperationForArray.isFull(stack));
 
         // print stack item
-        StackOperation.printStack(stack);
+        StackOperationForArray.printStack(stack);
         System.out.print("\n");
 
         System.out.println("then stack pop per step:");
         // pop stack item and print stack item
         for (int i = 0; i < 5; i++) {
-            StackOperation.pop(stack);
-            StackOperation.printStack(stack);
+            StackOperationForArray.pop(stack);
+            StackOperationForArray.printStack(stack);
             System.out.print("\n");
         }
-        System.out.print("Stack is empty:" + StackOperation.isEmpty(stack));
+        System.out.print("Stack is empty:" + StackOperationForArray.isEmpty(stack));
+    }
+
+    public static void stackUsingLinkedListDemo() {
+        StackUsingLinkedList stack = StackOperationForLinkedList.createStack(5);
+        StackOperationForLinkedList.push(stack, 1);
+        StackOperationForLinkedList.push(stack, 2);
+        StackOperationForLinkedList.push(stack, 3);
+        StackOperationForLinkedList.printStack(stack);
+        StackOperationForLinkedList.pop(stack);
+        System.out.print("\n");
+        StackOperationForLinkedList.printStack(stack);
+        StackOperationForLinkedList.pop(stack);
+        System.out.print("\n");
+        StackOperationForLinkedList.printStack(stack);
+        StackOperationForLinkedList.pop(stack);
+        System.out.print("\n");
+        StackOperationForLinkedList.printStack(stack);
     }
 }
