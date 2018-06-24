@@ -1,4 +1,4 @@
-package kenny.recursiveornot;
+package kenny.recursive;
 
 import java.util.ArrayList;
 import java.util.Scanner;
