@@ -17,16 +17,9 @@ public class StackOperationForLinkedList {
 
     public static void push(StackUsingLinkedList stack, int item) {
         Node node = new Node();
-        if (isEmpty(stack)) {
-            node.setData(item);
-            node.setLink(null);
-        }
-        else {
-            node.setData(item);
-            node.setLink(stack.getTop());
-        }
+        node.setData(item);
+        node.setLink(stack.getTop());
         stack.setTop(node);
-
     }
 
     public static int pop(StackUsingLinkedList stack) {
