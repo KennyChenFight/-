@@ -2,21 +2,12 @@ package kenny.stack;
 
 public class StackOperationForLinkedList {
 
-    public static StackUsingLinkedList createStack(int n) {
-        return new StackUsingLinkedList(n);
-    }
-
-    public static boolean isFull(StackUsingLinkedList stack) {
-        if (stack.getTop() == stack.getSize() - 1) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public static StackUsingLinkedList createStack() {
+        return new StackUsingLinkedList();
     }
 
     public static boolean isEmpty(StackUsingLinkedList stack) {
-        if (stack.getTop() == -1) {
+        if (stack.getTop() == null) {
             return true;
         }
         else {
@@ -25,16 +16,17 @@ public class StackOperationForLinkedList {
     }
 
     public static void push(StackUsingLinkedList stack, int item) {
-        if (isFull(stack)) {
-            System.out.println("your stack is full!");
+        Node node = new Node();
+        if (isEmpty(stack)) {
+            node.setData(item);
+            node.setLink(null);
         }
         else {
-            Node node = new Node();
-            stack.setTop(stack.getTop() + 1);
             node.setData(item);
-            node.setLink(stack.getNode());
-            stack.setNode(node);
+            node.setLink(stack.getTop());
         }
+        stack.setTop(node);
+
     }
 
     public static int pop(StackUsingLinkedList stack) {
@@ -43,9 +35,8 @@ public class StackOperationForLinkedList {
             return -1;
         }
         else {
-            int data = stack.getNode().getData();
-            stack.setTop(stack.getTop() - 1);
-            stack.setNode(stack.getNode().getLink());
+            int data = stack.getTop().getData();
+            stack.setTop(stack.getTop().getLink());
             return data;
         }
     }
@@ -56,8 +47,8 @@ public class StackOperationForLinkedList {
             System.out.println("No item!");
         }
         else {
-            Node node = stack.getNode();
-            while (node.getLink() != null) {
+            Node node = stack.getTop();
+            while (node != null) {
                 System.out.print(node.getData() + " ");
                 node = node.getLink();
             }

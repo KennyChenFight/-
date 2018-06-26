@@ -43,8 +43,14 @@ public class StackDemo {
         System.out.print("Stack is empty:" + StackOperationForArray.isEmpty(stack));
     }
 
+    /*
+    Stack using linked list simple demo
+    first push three items
+    second pop per step
+    third print stack
+     */
     public static void stackUsingLinkedListDemo() {
-        StackUsingLinkedList stack = StackOperationForLinkedList.createStack(5);
+        StackUsingLinkedList stack = StackOperationForLinkedList.createStack();
         StackOperationForLinkedList.push(stack, 1);
         StackOperationForLinkedList.push(stack, 2);
         StackOperationForLinkedList.push(stack, 3);
