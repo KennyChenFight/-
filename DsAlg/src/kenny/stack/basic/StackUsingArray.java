@@ -1,4 +1,4 @@
-package kenny.stack;
+package kenny.stack.basic;
 
 public class StackUsingArray {
 

@@ -1,4 +1,4 @@
-package kenny.stack;
+package kenny.stack.basic;
 
 import java.util.Random;
 
