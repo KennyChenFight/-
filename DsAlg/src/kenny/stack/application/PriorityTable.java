@@ -5,9 +5,9 @@ import java.util.Stack;
 
 public class PriorityTable {
 
-    private final static Token[] table = {
+    private final static Token[] convertToPostfixtable = {
             new Token("(", 0),
-            // $ => 負號
+            // $用來代表負號
             new Token("$", 1),
             new Token("^", 2),
             new Token("^", 3),
@@ -29,7 +29,33 @@ public class PriorityTable {
             new Token("(", 11),
     };
 
-    public static int comparePriority(String token1, Stack<String> tokenStack) {
+    private final static Token[] convertToPrefixtable = {
+            new Token(")", 0),
+            // $用來代表負號
+            new Token("$", 1),
+            new Token("^", 2),
+            new Token("^", 2),
+            new Token("*", 3),
+            new Token("/", 4),
+            new Token("+", 5),
+            new Token("-", 6),
+            new Token(">", 7),
+            new Token("<", 8),
+            new Token("<=", 9),
+            new Token(">=", 10),
+            new Token("==", 11),
+            new Token("!=", 12),
+            new Token("NOT", 13),
+            new Token("AND", 14),
+            new Token("OR", 15),
+            new Token("=", 16),
+            new Token("=", 16),
+            new Token(")", 17),
+    };
+
+    public static int comparePriority(String token1, Stack<String> tokenStack, boolean isPost) {
+        Token[] table = isPost ? convertToPostfixtable : convertToPrefixtable;
+
         if (tokenStack.isEmpty()) {
             return 0;
         }
@@ -53,7 +79,6 @@ public class PriorityTable {
                 priority2 = priority;
             }
         }
-        //System.out.println(priority1 + " " + priority2);
         if (priority1 < priority2) {
             return 0;
         }
@@ -66,8 +91,8 @@ public class PriorityTable {
         ArrayList<String> tokenList = new ArrayList<>();
         for (int i = 0; i < sentence.length(); i++) {
             boolean isOperand = true;
-            for (int j = 0; j < table.length; j++) {
-                Token token = table[j];
+            for (int j = 0; j < convertToPostfixtable.length; j++) {
+                Token token = convertToPostfixtable[j];
                 if ((i + 2) < sentence.length()) {
                     String temp1 = sentence.charAt(i) + sentence.charAt(i + 1) + sentence.charAt(i + 2) + "";
                     String temp2 = sentence.charAt(i) + sentence.charAt(i + 1) + "";
@@ -130,7 +155,7 @@ public class PriorityTable {
         if (token.equals(")")) {
             return false;
         }
-        for (Token temp : table) {
+        for (Token temp : convertToPostfixtable) {
             String operator = temp.getOperator();
             if (token.equals(operator)) {
                 return false;
