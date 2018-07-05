@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class InfixToPostfixandPostfixDemo {
+public class InfixToPostfixAndPostfixDemo {
 
     public static void main(String[] args) {
         System.out.print("input infix: ");

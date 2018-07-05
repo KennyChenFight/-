@@ -53,6 +53,15 @@ public class PriorityTable {
             new Token(")", 17),
     };
 
+    private final static Token[] operatorTable = {
+            // -1 means 這裡不討論優先性
+            new Token("+", -1, 2),
+            new Token("-", -1, 2),
+            new Token("*", -1, 2),
+            new Token("/", -1, 2),
+            new Token("^", -1, 2)
+    };
+
     public static int comparePriority(String token1, Stack<String> tokenStack, boolean isPost) {
         Token[] table = isPost ? convertToPostfixtable : convertToPrefixtable;
 
@@ -162,5 +171,15 @@ public class PriorityTable {
             }
         }
         return true;
+    }
+
+    public static int getOperatorNumber(String token) {
+        for (Token temp : operatorTable) {
+            if (temp.getOperator().equals(token)) {
+                return temp.getNumber();
+            }
+        }
+        // means 找不到該operator
+        return -1;
     }
 }
