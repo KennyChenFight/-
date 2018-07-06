@@ -1,15 +1,16 @@
 package kenny.stack.application;
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
 
-public class PostfixAndPrefixEvaluationDemo {
+public class PrefixEvaluationDemo {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("輸入只有加(+)減(-)乘(*)除(/)及次方(^)的Postfix式子:");
+        System.out.println("輸入只有加(+)減(-)乘(*)除(/)及次方(^)的Prefix式子:");
         String sentence = input.nextLine();
         Stack<String> s = new Stack<>();
-        for (int j = 0; j < sentence.length(); j++) {
+        for (int j = sentence.length() - 1; j >= 0; j--) {
             String x = sentence.charAt(j) + "";
             if (PriorityTable.isOperand(x)) {
                 s.push(x);
@@ -31,33 +32,33 @@ public class PostfixAndPrefixEvaluationDemo {
                     if (number == 2) {
                         switch (x) {
                             case "+":
-                                result = String.valueOf(Integer.parseInt(temp[1]) + Integer.parseInt(temp[0]));
+                                result = String.valueOf(Integer.parseInt(temp[0]) + Integer.parseInt(temp[1]));
                                 s.push(result);
-                                System.out.println(temp[1] + "+" + temp[0] + "=" + result);
+                                System.out.println(temp[0] + "+" + temp[1] + "=" + result);
                                 System.out.println("push:" + result);
                                 break;
                             case "-":
-                                result = String.valueOf(Integer.parseInt(temp[1]) - Integer.parseInt(temp[0]));
+                                result = String.valueOf(Integer.parseInt(temp[0]) - Integer.parseInt(temp[1]));
                                 s.push(result);
-                                System.out.println(temp[1] + "-" + temp[0] + "=" + result);
+                                System.out.println(temp[0] + "-" + temp[1] + "=" + result);
                                 System.out.println("push:" + result);
                                 break;
                             case "*":
-                                result = String.valueOf(Integer.parseInt(temp[1]) * Integer.parseInt(temp[0]));
+                                result = String.valueOf(Integer.parseInt(temp[0]) * Integer.parseInt(temp[1]));
                                 s.push(result);
-                                System.out.println(temp[1] + "*" + temp[0] + "=" + result);
+                                System.out.println(temp[0] + "*" + temp[1] + "=" + result);
                                 System.out.println("push:" + result);
                                 break;
                             case "/":
-                                result = String.valueOf(Integer.parseInt(temp[1]) / Integer.parseInt(temp[0]));
+                                result = String.valueOf(Integer.parseInt(temp[0]) / Integer.parseInt(temp[1]));
                                 s.push(result);
-                                System.out.println(temp[1] + "/" + temp[0] + "=" + result);
+                                System.out.println(temp[0] + "/" + temp[1] + "=" + result);
                                 System.out.println("push:" + result);
                                 break;
                             case "^":
-                                result = String.valueOf(Math.pow(Integer.parseInt(temp[1]), Integer.parseInt(temp[0])));
+                                result = String.valueOf(Math.pow(Integer.parseInt(temp[0]), Integer.parseInt(temp[1])));
                                 s.push(result);
-                                System.out.println(temp[1] + "^" + temp[0] + "=" + result);
+                                System.out.println(temp[0] + "^" + temp[1] + "=" + result);
                                 System.out.println("push:" + result);
                                 break;
                         }
@@ -65,6 +66,6 @@ public class PostfixAndPrefixEvaluationDemo {
                 }
             }
         }
-        System.out.println("result: " + s.pop());
+        System.out.println("result:" + s.pop());
     }
 }
