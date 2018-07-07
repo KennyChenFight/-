@@ -3,7 +3,7 @@ package kenny.stack.application;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class compareBracketsDemo {
+public class CompareBracketsDemo {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
